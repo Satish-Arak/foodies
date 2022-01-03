@@ -1,0 +1,25 @@
+<p>
+    <strong><%= @restaurant.name %></strong>, <%= @restaurant.address %>
+</p>
+
+
+<p>
+    <%= @restaurant.phone_number %>
+</p>
+
+
+<h3>Items
+<%= link_to  "New item",  new_restaurant_item_path(@restaurant) %></h3>
+
+<table>
+    <% @restaurant.items.each do |item| %>
+        <tr>
+            <td><%= item.name %></td> 
+            <td><%= item.price %></td> 
+            <td><%= link_to 'Show', restaurant_item_path(@restaurant, item)  %></td> 
+            <td><%= link_to "Add-to-order", new_order_path %></td>
+
+        </tr>
+    <% end %>
+</table>
+

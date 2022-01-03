@@ -1,0 +1,14 @@
+<h1>Items</h1>
+<%= link_to  "New item",  new_restaurant_item_path %>
+
+<table>
+    <% @items.each do |item| %>
+        <tr>
+            <td><%= item.name %></td> 
+            <td><%= item.price %></td> 
+            <td><%= link_to "Add-to-Order", new_order_path, class: "btn btn-primary" %></td>
+            <td><%= link_to 'Show', restaurant_item_path(@restaurant, item)  %></td>  
+        </tr>
+    <% end %>
+</table>
+
