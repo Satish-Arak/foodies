@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_03_103231) do
+ActiveRecord::Schema.define(version: 2022_01_03_190010) do
 
   create_table "items", force: :cascade do |t|
     t.string "name"
@@ -20,13 +20,18 @@ ActiveRecord::Schema.define(version: 2022_01_03_103231) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "orders", force: :cascade do |t|
-    t.integer "restaurant_id"
+  create_table "order_items", force: :cascade do |t|
+    t.integer "order_id"
     t.integer "item_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "user_id", null: false
-    t.index ["user_id"], name: "index_orders_on_user_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.integer "restaurant_id"
+    t.integer "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "restaurants", force: :cascade do |t|
@@ -49,5 +54,4 @@ ActiveRecord::Schema.define(version: 2022_01_03_103231) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "orders", "users"
 end

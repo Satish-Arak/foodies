@@ -1,1 +1,13 @@
-<hi>new</h1>
+<%= form_for(@order) do |form| %>
+    <% if @user %>
+        <%= form.hidden_field :user_id %><br>
+    <% end %>
+
+    <% if @restaurant %>
+        <%= form.hidden_field :restaurant_id %><br>
+    <% end %>
+
+    <p>
+        <%= form.submit %>
+    </p>
+<% end %>
