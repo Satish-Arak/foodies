@@ -3,11 +3,11 @@ class OrdersController < ApplicationController
 
     def index
         if params[:user_id]
-            @user = User.find(params[:user_id])  
-            @orders = @user.orders
+            user = User.find(params[:user_id])  
+            @orders = user.orders
         else
-            @restaurant = Restaurant.find(params[:restaurant_id])
-            @orders = @restaurant.orders 
+            restaurant = Restaurant.find(params[:restaurant_id])
+            @orders = restaurant.orders 
         end
     end
 
@@ -24,6 +24,9 @@ class OrdersController < ApplicationController
     def create
         @order = Order.new(order_params)
         if @order.save
+            params[:item_ids].each do |item_id|
+                @order.order_items.create(item_id: item_id)
+            end
             redirect_to root_path
         else
             render actin: "new"
