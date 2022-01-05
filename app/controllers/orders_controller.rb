@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
     before_action :set_order, only: %i[show]
+    
 
     def index
         if params[:user_id]
