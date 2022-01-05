@@ -11,7 +11,8 @@ Rails.application.routes.draw do
   
   devise_for :users, controllers: { sessions: 'users/sessions' }
 
-
+  get "/auth/facebook/callback", to: "omniauth_callbacks#facebook"
+  
   # devise_for :users
 
   
