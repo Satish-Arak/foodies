@@ -9,9 +9,9 @@ Rails.application.routes.draw do
 
   resources :orders
   
-  devise_for :users, controllers: { sessions: 'users/sessions' }
+  devise_for :users, controllers: { sessions: 'users/sessions', omniauth_callbacks: 'users/omniauth_callbacks' }
 
-  get "/auth/facebook/callback", to: "omniauth_callbacks#facebook"
+  # get "/auth/facebook/callback", to: "omniauth_callbacks#facebook"
   
   # devise_for :users
 
