@@ -8,6 +8,11 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   # def twitter
   # end
 
+  def github
+    @user = User.create_from_provider_data(request.env['omniauth.auth'])
+    sign_in_and_redirect @user
+  end
+  
   # More info at:
   # https://github.com/heartcombo/devise#omniauth
 
